@@ -1,0 +1,145 @@
+:root {
+  --bg: #fdf6ec;
+  --card: #ffffff;
+  --text: #2b1d14;
+  --muted: #6f5846;
+  --accent: #c2410c;
+  --border: #f0dfc8;
+  --input-border: #e0cdb2;
+  --radius: 10px;
+}
+ 
+* { box-sizing: border-box; }
+ 
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+ 
+h1, h2 { font-family: "Playfair Display", serif; margin: 0; }
+ 
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.app main { flex: 1; }
+ 
+button, .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 24px;
+  background: var(--accent); color: #fff;
+  border: 0; border-radius: var(--radius);
+  font: 600 15px "Inter", sans-serif;
+  text-decoration: none; cursor: pointer;
+}
+button:hover, .btn:hover { opacity: .9; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+ 
+ 
+.header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: space-between; align-items: center;
+  padding: 18px 40px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.header .logo {
+  font-family: "Playfair Display", serif;
+  font-size: 24px; font-weight: 700; color: var(--accent);
+}
+.header nav { display: flex; gap: 32px; }
+.header nav a {
+  color: var(--text); text-decoration: none; font-weight: 500;
+  padding: 8px 0; border-bottom: 2px solid transparent;
+}
+.header nav a:hover,
+.header nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+ 
+.panier {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 10px 16px;
+  min-height: 44px; font-weight: 600;
+}
+.badge {
+  background: var(--accent); color: #fff; border-radius: 99px;
+  font-size: 12px; min-width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+ 
+/* Pages */
+.page-accueil, .page-produits, .page-contact {
+  max-width: 1120px; margin: 0 auto; padding: 48px 40px;
+}
+ 
+/* Accueil */
+.hero {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px; align-items: center;
+}
+.hero h1 { font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
+.hero p { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 460px; margin: 0 0 24px; }
+.hero img { width: 100%; height: 380px; object-fit: cover; border-radius: 16px; }
+.phares { margin-top: 64px; }
+.phares h2 { font-size: 30px; margin-bottom: 24px; }
+ 
+/* Produits */
+.page-produits h2 { font-size: 36px; }
+.search-bar { display: flex; gap: 12px; margin: 24px 0 32px; }
+.search-bar input {
+  flex: 1; min-height: 44px; padding: 0 16px;
+  border: 1px solid var(--input-border); border-radius: var(--radius);
+  background: var(--card); color: var(--text); font: 16px "Inter", sans-serif;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+ 
+/* Carte produit : la photo touche les bords de la carte */
+.product-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0; overflow: hidden;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,.1); }
+ 
+.product-card img,
+.product-card .no-img {
+  width: 100%; height: 220px;
+  object-fit: cover; border-radius: 0;
+  display: block;
+}
+.product-card .no-img {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); color: var(--muted); font-size: 14px;
+}
+ 
+/* Le texte et le bouton gardent une marge de 16px */
+.product-card > :not(img):not(.no-img) { margin-left: 16px; margin-right: 16px; }
+.product-card h3 { margin-top: 8px; margin-bottom: 0; font-size: 18px; }
+.product-card .des { margin-top: 0; margin-bottom: 0; font-size: 14px; color: var(--muted); }
+.product-card .prix { margin-top: 0; margin-bottom: 0; font-weight: 700; font-size: 18px; }
+.product-card button { margin-bottom: 16px; }
+ 
+/* Contact */
+.page-contact { max-width: 640px; }
+.page-contact h2 { font-size: 36px; }
+.page-contact .intro { color: var(--muted); margin: 12px 0 28px; }
+.page-contact form { display: flex; flex-direction: column; gap: 18px; }
+.page-contact label { display: block; font-weight: 600; }
+.page-contact input, .page-contact select, .page-contact textarea {
+  width: 100%; min-height: 44px; margin-top: 6px; padding: 10px 14px;
+  border: 1px solid var(--input-border); border-radius: var(--radius);
+  background: var(--card); color: var(--text); font: 16px "Inter", sans-serif;
+}
+.page-contact form button { align-self: flex-start; }
+ 
+.footer {
+  border-top: 1px solid var(--border); padding: 24px 40px;
+  color: var(--muted); font-size: 14px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+}
