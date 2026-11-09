@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import useProduits from "./useProduits";
 
-const SERVICE_ID = "TON_SERVICE_ID";
-const TEMPLATE_ID = "TON_TEMPLATE_ID";
-const PUBLIC_KEY = "TA_PUBLIC_KEY";
+const SERVICE_ID = "service_xxxxxxx";  
+const TEMPLATE_ID = "template_xxxxxxx"; 
+const PUBLIC_KEY = "xxxxxxxxxxxxxxxx";   
 
 export default function Contact() {
   const form = useRef();
